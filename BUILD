@@ -14,7 +14,7 @@ docker_bundle(
         "gcr.io/{PROJECT_ID}/base:debug": "//base:debug",
         "gcr.io/{PROJECT_ID}/cc:latest": "//cc",
         "gcr.io/{PROJECT_ID}/cc:debug": "//cc:debug",
-        "gcr.io/{PROJECT_ID}/java:latest": "//java:java8",
+        "gcr.io/{PROJECT_ID}/java:latest": "//java:java10",
         "gcr.io/{PROJECT_ID}/java:debug": "//java:debug",
         "gcr.io/{PROJECT_ID}/java/jetty:latest": "//java/jetty",
         "gcr.io/{PROJECT_ID}/java/jetty:debug": "//java/jetty:debug",
