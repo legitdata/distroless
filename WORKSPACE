@@ -87,7 +87,7 @@ dpkg_list(
 
         #java
         "zlib1g",
-        "openjdk-10-jre-headless",
+        "openjdk-11-jre-headless",
 
         #python
         "libpython2.7-minimal",

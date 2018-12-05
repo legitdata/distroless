@@ -10,11 +10,11 @@ cacerts_java(
 )
 
 [docker_build(
-    name = "java10" if (not mode) else mode[1:],
+    name = "java11" if (not mode) else mode[1:],
     base = "//cc" + mode,
     debs = [
         packages["zlib1g"],
-        packages["openjdk-10-jre-headless"],
+        packages["openjdk-11-jre-headless"],
     ],
     entrypoint = [
         "/usr/bin/java",
@@ -23,7 +23,7 @@ cacerts_java(
         # cmd = ["/path/to/deploy.jar", "--option1", ...]
     ],
     symlinks = {
-        "/usr/bin/java": "/usr/lib/jvm/java-10-openjdk-amd64/jre/bin/java",
+        "/usr/bin/java": "/usr/lib/jvm/java-11-openjdk-amd64/bin/java",
     },
     tars = [":cacerts_java"],
 ) for mode in [
@@ -34,20 +34,20 @@ cacerts_java(
 load("@io_bazel_rules_docker//contrib:test.bzl", "container_test")
 
 container_test(
-    name = "java10_test",
+    name = "java11_test",
     configs = ["testdata/java.yaml"],
-    image = ":java10",
+    image = ":1",
 )
 
 java_image(
     name = "check_certs",
     srcs = ["testdata/CheckCerts.java"],
-    base = "//java:java10",
+    base = "//java:java11",
     main_class = "testdata.CheckCerts",
 )
 
 container_test(
     name = "check_certs_test",
     configs = ["testdata/java.yaml"],
-    image = ":java10",
+    image = ":java11",
 )
