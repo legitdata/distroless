@@ -87,7 +87,6 @@ dpkg_list(
 
         #java
         "zlib1g",
-        "openjdk-11-jre-headless",
 
         #python
         "libpython2.7-minimal",
@@ -155,6 +154,15 @@ dpkg_list(
         "@debian_stretch//file:Packages.json",
         "@debian_buster//file:Packages.json",
     ],
+)
+
+new_http_archive(
+    name = "openj9",
+    build_file = "BUILD.openj9",
+    sha256 = "83a7c95e6b2150a739bdd5e8a6fe0315904fd13d8867c95db67c0318304a2c42",
+    strip_prefix = "/./",
+    type = "tar.gz",
+    urls = ["https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11%2B28/OpenJDK11-jre_x64_linux_openj9_11_28.tar.gz"]
 )
 
 # For Jetty
