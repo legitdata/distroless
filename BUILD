@@ -1,16 +1,12 @@
 package(default_visibility = ["//visibility:public"])
 
-# Go boilerplate
-load("@io_bazel_rules_go//go:def.bzl", "go_prefix")
-
-go_prefix("github.com/GoogleContainerTools/distroless")
-
 load("@io_bazel_rules_docker//docker:docker.bzl", "docker_bundle")
 
 docker_bundle(
     name = "all",
     images = {
-        "gcr.io/{PROJECT_ID}/base:latest": "//base",
+        "gcr.io/{PROJECT_ID}/go:latest": "//base:static",
+        "gcr.io/{PROJECT_ID}/base:latest": "//base:base",
         "gcr.io/{PROJECT_ID}/base:debug": "//base:debug",
         "gcr.io/{PROJECT_ID}/cc:latest": "//cc",
         "gcr.io/{PROJECT_ID}/cc:debug": "//cc:debug",
